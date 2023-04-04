@@ -1,20 +1,26 @@
-import moment from "moment";
+import moment from "moment-timezone";
 import { WiSunrise, WiSunset, WiHumidity } from "react-icons/wi";
 import { useCityToday } from "../hooks/useCityToday";
 import { CityTodayProps } from "../interfaces/inputs";
 import { FORMAT_DAY, FORMAT_HOURS } from "../constants/index";
+import { listCity } from "../data/listCity";
 
-const CityToday = ({ nameCity }: CityTodayProps) => {
-  const { cityToday, isLoading, isError } = useCityToday({ nameCity });
-  
+const CityToday = ({ nameCity, setDt }: CityTodayProps) => {
+  const { cityToday, isLoading, isError } = useCityToday({ nameCity, setDt });
+  setDt(cityToday?.dt || 0);
+
+  //find timezone in listCity
+  const timezone = listCity.find((city) => city.value === nameCity)?.timezone;
+
   const day = moment((cityToday?.dt || 0) * 1000).format(FORMAT_DAY);
   const horaInCity = moment((cityToday?.dt || 0) * 1000).format(FORMAT_HOURS);
-  const sunrise = moment((cityToday?.sys.sunrise || 0) * 1000).format(
-    FORMAT_HOURS //.tz(timezone)
-  );
-  const sunset = moment((cityToday?.sys.sunset || 0) * 1000).format(
-    FORMAT_HOURS //.tz(timezone)
-  );
+
+  const sunrise = moment((cityToday?.sys.sunrise || 0) * 1000)
+    .tz(timezone || "")
+    .format(FORMAT_HOURS);
+  const sunset = moment((cityToday?.sys.sunset || 0) * 1000)
+    .tz(timezone || "")
+    .format(FORMAT_HOURS);
 
   if (isError) {
     return (
@@ -25,7 +31,7 @@ const CityToday = ({ nameCity }: CityTodayProps) => {
   }
 
   return (
-    <div className="p-4 mt-4 bg-slate-200">
+    <div className="p-4 mt-4 rounded-lg bg-slate-200">
       {isLoading ? (
         <div className="flex items-center justify-center text-lg h-80">
           Loading...

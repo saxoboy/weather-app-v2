@@ -10,6 +10,7 @@ function App() {
   const [nameCity, setNameCity] = useState("Quito, EC");
   const [lat, setLat] = useState<number>(-0.22985);
   const [lon, setLon] = useState<number>(-78.52495);
+  const [dt, setDt] = useState<number>(0);
 
   return (
     <SWRConfig
@@ -43,13 +44,13 @@ function App() {
             />
             <main className="flex flex-col w-2/3 max-w-full py-6 gap-y-4">
               <div>
-                <CityToday nameCity={nameCity} />
+                <CityToday nameCity={nameCity} setDt={setDt} />
               </div>
               <div>
-                <CityHowWill />
+                <CityHowWill nameCity={nameCity} lat={lat} lon={lon} />
               </div>
               <div>
-                <CityHowWas />
+                <CityHowWas nameCity={nameCity} lat={lat} lon={lon} />
               </div>
             </main>
           </div>
