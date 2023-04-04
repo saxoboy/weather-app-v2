@@ -12,8 +12,12 @@ const CityToday = ({ nameCity, setDt }: CityTodayProps) => {
   //find timezone in listCity
   const timezone = listCity.find((city) => city.value === nameCity)?.timezone;
 
-  const day = moment((cityToday?.dt || 0) * 1000).format(FORMAT_DAY);
-  const horaInCity = moment((cityToday?.dt || 0) * 1000).format(FORMAT_HOURS);
+  const day = moment((cityToday?.dt || 0) * 1000)
+    .tz(timezone || "")
+    .format(FORMAT_DAY);
+  const horaInCity = moment((cityToday?.dt || 0) * 1000)
+    .tz(timezone || "")
+    .format(FORMAT_HOURS);
 
   const sunrise = moment((cityToday?.sys.sunrise || 0) * 1000)
     .tz(timezone || "")
@@ -39,7 +43,7 @@ const CityToday = ({ nameCity, setDt }: CityTodayProps) => {
       ) : (
         <div className="flex flex-wrap mb-4">
           <div className="w-full sm:w-1/2 md:w-1/4">
-            <div className="flex-shrink-0 h-40 mx-auto bg-indigo-200 rounded-full sm:w-48 sm:h-48 w-30">
+            <div className="flex-shrink-0 h-40 mx-auto rounded-full bg-slate-400 sm:w-48 sm:h-48 w-30">
               <img
                 src={`https://openweathermap.org/img/wn/${cityToday?.weather[0].icon}@4x.png`}
                 alt={cityToday?.weather[0].main}

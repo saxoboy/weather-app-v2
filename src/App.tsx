@@ -24,7 +24,7 @@ function App() {
           <div className="container mx-auto">
             <div className="flex items-center justify-between py-6">
               <div className="text-3xl font-bold text-white font-display">
-                Weater App
+                Weather App
               </div>
               <div>
                 <FaGithub className="text-3xl text-white hover:text-slate-300" />
