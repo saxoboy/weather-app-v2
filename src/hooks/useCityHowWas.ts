@@ -38,62 +38,7 @@ export const useCityHowWas = ({ lat, lon }: CityHowWassProps) => {
     dato: dato = data ? [...dato, algo] : [];
     errors = error ? [...errors, error] : [];
   });
-
-  // const { data, error } = useSWR<WeatherDaysWas, Error>(
-  //   `${
-  //     import.meta.env.VITE_API_URL
-  //   }/onecall/timemachine?lat=${lat}&lon=${lon}&dt=${daysAgo[0]}&appid=${
-  //     import.meta.env.VITE_API_KEY
-  //   }&units=metric&exclude=minutely,hourly`,
-  //   fetcher
-  // );
-  // dato = data ? [...dato, data] : [];
-  // errors = error ? [...errors, error] : [];
-
-  // const { data: data2, error: error2 } = useSWR<WeatherDaysWas, Error>(
-  //   `${
-  //     import.meta.env.VITE_API_URL
-  //   }/onecall/timemachine?lat=${lat}&lon=${lon}&dt=${daysAgo[1]}&appid=${
-  //     import.meta.env.VITE_API_KEY
-  //   }&units=metric&exclude=minutely,hourly`,
-  //   fetcher
-  // );
-  // dato = data2 ? [...dato, data2] : [];
-  // errors = error2 ? [...errors, error2] : [];
-
-  // const { data: data3, error: error3 } = useSWR<WeatherDaysWas, Error>(
-  //   `${
-  //     import.meta.env.VITE_API_URL
-  //   }/onecall/timemachine?lat=${lat}&lon=${lon}&dt=${daysAgo[2]}&appid=${
-  //     import.meta.env.VITE_API_KEY
-  //   }&units=metric&exclude=minutely,hourly`,
-  //   fetcher
-  // );
-  // dato = data3 ? [...dato, data3] : [];
-  // errors = error3 ? [...errors, error3] : [];
-
-  // const { data: data4, error: error4 } = useSWR<WeatherDaysWas, Error>(
-  //   `${
-  //     import.meta.env.VITE_API_URL
-  //   }/onecall/timemachine?lat=${lat}&lon=${lon}&dt=${daysAgo[3]}&appid=${
-  //     import.meta.env.VITE_API_KEY
-  //   }&units=metric&exclude=minutely,hourly`,
-  //   fetcher
-  // );
-  // dato = data4 ? [...dato, data4] : [];
-  // errors = error4 ? [...errors, error4] : [];
-
-  // const { data: data5, error: error5 } = useSWR<WeatherDaysWas, Error>(
-  //   `${
-  //     import.meta.env.VITE_API_URL
-  //   }/onecall/timemachine?lat=${lat}&lon=${lon}&dt=${daysAgo[4]}&appid=${
-  //     import.meta.env.VITE_API_KEY
-  //   }&units=metric&exclude=minutely,hourly`,
-  //   fetcher
-  // );
-  // dato = data5 ? [...dato, data5] : [];
-  // errors = error5 ? [...errors, error5] : [];
-
+  
   return {
     cityHowWass: dato,
     isLoading: !errors && !dato,
