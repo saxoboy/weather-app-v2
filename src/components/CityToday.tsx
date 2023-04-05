@@ -41,26 +41,26 @@ const CityToday = ({ nameCity, setDt }: CityTodayProps) => {
           Loading...
         </div>
       ) : (
-        <div className="flex flex-wrap mb-4">
-          <div className="w-full sm:w-1/2 md:w-1/4">
-            <div className="flex-shrink-0 h-40 mx-auto rounded-full bg-slate-400 sm:w-48 sm:h-48 w-30">
+        <div className="flex flex-col flex-wrap mb-4 lg:flex-row">
+          <div className="w-full mx-auto lg:w-1/3">
+            <div className="flex-shrink-0 w-32 h-40 mx-auto rounded-full bg-slate-400 sm:w-48 sm:h-48">
               <img
                 src={`https://openweathermap.org/img/wn/${cityToday?.weather[0].icon}@4x.png`}
                 alt={cityToday?.weather[0].main}
-                className="block"
+                className="block mx-auto"
               />
             </div>
             <p className="py-4 text-center uppercase">
               {cityToday?.weather[0].main} - {cityToday?.weather[0].description}
             </p>
           </div>
-          <div className="w-full px-8 sm:w-1/2 md:w-2/4">
+          <div className="w-full px-8 mx-auto lg:w-1/3">
             <p className="pt-2 pb-2 font-display">{day}</p>
             <p className="pb-4">{horaInCity}</p>
             <h2 className="mb-2 text-4xl font-medium text-center text-slate-900 font-display">
               {cityToday?.name}
             </h2>
-            <div className="flex flex-wrap">
+            <div className="flex">
               <div className="flex-grow mt-8 text-center">
                 Temp Min.
                 <br />
@@ -80,23 +80,23 @@ const CityToday = ({ nameCity, setDt }: CityTodayProps) => {
             </div>
           </div>
           <div
-            className="w-full pt-12 bg-no-repeat sm:w-1/2 md:w-1/4"
+            className="w-full pt-12 mx-auto bg-no-repeat lg:w-1/3"
             style={{
               backgroundImage: `url(https://openweathermap.org/img/wn/${cityToday?.weather[0].icon}@2x.png)`,
               backgroundPosition: "8em -1em",
             }}
           >
-            <div className="py-2">
+            <div className="py-2 text-center">
               Sunrise:
               <WiSunrise size={48} color="#000" className="inline-block mx-2" />
               {sunrise}
             </div>
-            <div className="py-2">
+            <div className="py-2 text-center">
               Sunset:
               <WiSunset size={48} color="#000" className="inline-block mx-2" />
               {sunset}
             </div>
-            <div className="py-2">
+            <div className="py-2 text-center">
               Humidity:
               <WiHumidity
                 size={48}

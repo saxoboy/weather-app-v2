@@ -31,7 +31,7 @@ const CityHowWas = ({ nameCity, lat, lon }: CityHowWassProps) => {
           <h3 className="pb-6 text-3xl font-display">
             How was the weather in {nameCity}?
           </h3>
-          <div className="grid grid-cols-5 gap-4">
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-5">
             {cityHowWass.map((dia) => (
               <div key={dia.dt} className="p-4 text-center rounded-lg bg-slate-300">
                 <p className="text-lg">

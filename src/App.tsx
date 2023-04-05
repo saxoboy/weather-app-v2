@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { SWRConfig } from "swr";
-import { FaGithub } from "react-icons/fa";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 import CityHowWas from "./components/CityHowWas";
 import CityHowWill from "./components/CityHowWill";
 import CitysList from "./components/CitysList";
@@ -22,12 +22,23 @@ function App() {
       <div className="bg-slate-300 font-body">
         <div className="bg-slate-700">
           <div className="container mx-auto">
-            <div className="flex items-center justify-between py-6">
+            <div className="flex items-center justify-between px-4 py-6">
               <div className="text-3xl font-bold text-white font-display">
                 Weather App
               </div>
-              <div>
-                <FaGithub className="text-3xl text-white hover:text-slate-300" />
+              <div className="flex gap-x-4">
+                <a
+                  href="https://www.linkedin.com/in/israelherrerae/"
+                  target="_blank"
+                >
+                  <FaLinkedin className="text-3xl text-white hover:text-slate-300" />
+                </a>
+                <a
+                  href="https://github.com/saxoboy/weather-app-v2"
+                  target="_blank"
+                >
+                  <FaGithub className="text-3xl text-white hover:text-slate-300" />
+                </a>
               </div>
             </div>
           </div>
